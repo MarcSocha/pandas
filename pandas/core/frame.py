@@ -10947,6 +10947,10 @@ Parrot 2  Parrot       24.0
 
         new_ax = old_ax.to_period(freq=freq)
 
+        if new_obj == DataFrame.NaT:
+            new_ax = old_ax.to_timestamp(freq=freq, how='end')
+
+
         setattr(new_obj, axis_name, new_ax)
         return new_obj
 
